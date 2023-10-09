@@ -9,7 +9,8 @@ public class SingletonAssignment {
         for (int i = 0; i < numThreads; i++) {
             Thread thread = new Thread(() -> {
                 Singleton singleton = Singleton.getInstance();
-                System.out.println("Thread " + Thread.currentThread().threadId() + " got instance: " + singleton.hashCode());
+                singleton.add_to_count(1);
+                System.out.println("Thread " + Thread.currentThread().threadId() + " got instance: " + singleton.hashCode() + " | " + singleton.get_count());
             });
             threads.add(thread);
         }
